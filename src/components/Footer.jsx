@@ -1,10 +1,19 @@
-import React from 'react';
+// Footer.jsx
+import React from "react";
+import { Box, Typography, Container, Link } from "@mui/material";
 
 const Footer = () => {
   return (
-    <footer className="py-6 bg-gray-900 text-gray-400 text-center">
-      <p>&copy; 2025 My Interactive Portfolio. All rights reserved.</p>
-    </footer>
+    <Box component="footer" sx={{ py: 3, backgroundColor: 'primary.main', color: 'white' }}>
+      <Container maxWidth="lg">
+        <Typography variant="body1" align="center">
+          © {new Date().getFullYear()} Your Company. All rights reserved.
+        </Typography>
+        <Typography variant="body2" align="center">
+          <Link href="/privacy" color="inherit" underline="hover">Privacy Policy</Link>
+        </Typography>
+      </Container>
+    </Box>
   );
 };
 

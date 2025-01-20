@@ -1,19 +1,24 @@
-import React from 'react';
+import React from "react";
+import { Container, Typography, Box } from "@mui/material";
 
 const About = () => {
   return (
-    <section className="py-16 bg-background text-center">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-primary mb-4">About Me</h2>
-        <p className="text-lg text-text">
-          I'm a passionate web developer with expertise in creating modern,
-          responsive, and user-friendly applications. I enjoy leveraging the
-          latest technologies to solve real-world problems and deliver seamless
-          user experiences.
-        </p>
-      </div>
-    </section>
+    <Container maxWidth="md" sx={{ py: 5 }}>
+      <Typography variant="h3" align="center" gutterBottom>
+        About Us
+      </Typography>
+      <Box sx={{ mt: 3 }}>
+        <Typography variant="body1" paragraph>
+          Welcome to our portfolio! I strive to deliver the best services to my
+          customers with utmost dedication and professionalism.I am 
+          passionate about creating solutions that matter.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          With years of experience in the industry, I have honed my skills to
+          provide unparalleled quality and reliability. Let us come together on this journey
+          as we continue to innovate and excel.
+        </Typography>
+      </Box>
+    </Container>
   );
 };
-
-export default About;
