@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <Container maxWidth="sm" sx={{ py: 5 }}>
       <Typography variant="h4" align="center" gutterBottom>
-        Contact Us
+        Get in Touch
       </Typography>
       <Box
         component="form"
@@ -18,17 +18,19 @@ const Contact = () => {
         noValidate
         autoComplete="off"
       >
-        <TextField label="Name" variant="outlined" fullWidth />
-        <TextField label="Email" variant="outlined" fullWidth />
-        <TextField
-          label="Message"
-          variant="outlined"
-          multiline
-          rows={4}
-          fullWidth
-        />
-        <Button variant="contained" color="primary" size="large">
-          Submit
+        <TextField label="Name" variant="outlined" fullWidth required />
+        <TextField label="Email" type="email" variant="outlined" fullWidth required />
+        <TextField label="Message" variant="outlined" multiline rows={4} fullWidth required />
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{
+            transition: "0.3s",
+            "&:hover": { backgroundColor: "secondary.main" },
+          }}
+        >
+          Send Message
         </Button>
       </Box>
     </Container>

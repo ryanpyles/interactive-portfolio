@@ -4,17 +4,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
     "@mui/material": "^5.16.14",
     "@react-three/drei": "^9.120.8",
     "@react-three/fiber": "^8.17.12",
     "framer-motion": "^11.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
     "three": "^0.172.0"
   },
   "devDependencies": {

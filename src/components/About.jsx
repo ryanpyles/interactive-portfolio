@@ -1,24 +1,22 @@
 import React from "react";
-import { Container, Typography, Box } from "@mui/material";
+import { Box, Typography, Avatar, Container } from "@mui/material";
 
 const About = () => {
   return (
-    <Container maxWidth="md" sx={{ py: 5 }}>
-      <Typography variant="h3" align="center" gutterBottom>
-        About Us
+    <Container maxWidth="md" sx={{ py: 5, textAlign: "center" }}>
+      <Avatar
+        alt="Ryan Pyles"
+        src="/src/assets/avatar.png"
+        sx={{ width: 120, height: 120, mx: "auto", mb: 3 }}
+      />
+      <Typography variant="h3" gutterBottom>
+        About Me
       </Typography>
-      <Box sx={{ mt: 3 }}>
-        <Typography variant="body1" paragraph>
-          Welcome to our portfolio! I strive to deliver the best services to my
-          customers with utmost dedication and professionalism.I am 
-          passionate about creating solutions that matter.
-        </Typography>
-        <Typography variant="body1" paragraph>
-          With years of experience in the industry, I have honed my skills to
-          provide unparalleled quality and reliability. Let us come together on this journey
-          as we continue to innovate and excel.
-        </Typography>
-      </Box>
+      <Typography variant="body1" sx={{ maxWidth: 600, mx: "auto" }}>
+        I'm a passionate full-stack developer, UX/UI designer, and creative technologist.
+        With experience in React, Three.js, and Material-UI, I build immersive digital
+        experiences. Let's connect and create something amazing!
+      </Typography>
     </Container>
   );
 };
