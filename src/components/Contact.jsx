@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, TextField, Button, Typography, Container } from "@mui/material";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
