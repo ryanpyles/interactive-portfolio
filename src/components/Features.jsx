@@ -29,6 +29,7 @@ const Features = () => {
       transition={{ duration: 0.8 }}
     >
       <Box sx={{ py: 5, textAlign: "center" }}>
+        {/* Technical Skills Section */}
         <Typography variant="h3" gutterBottom>
           My Technical Skills
         </Typography>
@@ -51,6 +52,7 @@ const Features = () => {
           ))}
         </Grid>
 
+        {/* Services Offered Section */}
         <Typography variant="h3" gutterBottom sx={{ mt: 6 }}>
           Services I Offer
         </Typography>

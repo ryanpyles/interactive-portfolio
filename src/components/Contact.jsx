@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, TextField, Button, Typography, Container } from "@mui/material";
-import { motion } from "framer-motion";
+import { Container, TextField, Button, Typography, Box } from "@mui/material";
 
 const Contact = () => {
   return (
@@ -17,15 +16,39 @@ const Contact = () => {
           mt: 3,
         }}
         noValidate
-        autoComplete="off"
+        autoComplete="on" // Enable browser autofill
       >
-        <TextField label="Name" variant="outlined" fullWidth required />
-        <TextField label="Email" type="email" variant="outlined" fullWidth required />
-        <TextField label="Message" variant="outlined" multiline rows={4} fullWidth required />
+        <TextField
+          id="name"
+          name="name"
+          label="Name"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          id="email"
+          name="email"
+          label="Email"
+          type="email"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          id="message"
+          name="message"
+          label="Message"
+          variant="outlined"
+          multiline
+          rows={4}
+          fullWidth
+          required
+        />
         <Button
+          type="submit"
           variant="contained"
           color="primary"
-          size="large"
           sx={{
             transition: "0.3s",
             "&:hover": { backgroundColor: "secondary.main" },
