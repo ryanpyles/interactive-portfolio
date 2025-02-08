@@ -11,33 +11,30 @@ const tabs = [
     content: {
       title: "Welcome to My Portfolio",
       description: "I'm a full-stack developer specializing in modern web experiences.",
-      image: "/assets/home.jpg",
     },
   },
   {
     id: "services",
-    label: "Services/Specialties",
+    label: "Services",
     color: "#FF6347",
     content: {
       title: "What I Offer",
       description: "Web development, branding, UX/UI design, and digital strategy.",
-      image: "/assets/services.jpg",
     },
   },
   {
     id: "portfolio",
     label: "Portfolio",
     color: "#87CEFA",
-    content: <Projects />, // Loads dynamic GitHub & Vercel projects
+    content: <Projects />,
   },
   {
     id: "contact",
-    label: "Contact Me",
+    label: "Contact",
     color: "#32CD32",
     content: {
       title: "Let's Connect",
       description: "Reach out for collaborations or freelance opportunities.",
-      image: "/assets/contact.jpg",
     },
   },
 ];
@@ -45,21 +42,22 @@ const tabs = [
 const RightTabsLayout = () => {
   const [activeTab, setActiveTab] = useState(null);
 
+  const toggleTab = (id) => {
+    setActiveTab(activeTab === id ? null : id);
+  };
+
   return (
     <div className="right-tabs-container">
-      {/* Vertical Tabs on the Right */}
+      {/* Vertical Tabs */}
       <div className="tabs">
         {tabs.map((tab) => (
-          <motion.div
+          <div
             key={tab.id}
             className={`tab ${activeTab === tab.id ? "active" : ""}`}
-            style={{ backgroundColor: tab.color }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setActiveTab(tab.id === activeTab ? null : tab.id)}
+            onClick={() => toggleTab(tab.id)}
           >
             {tab.label}
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -67,44 +65,22 @@ const RightTabsLayout = () => {
       <AnimatePresence>
         {activeTab && (
           <motion.div
-            className="expanded-content"
+            className={`expanded-content ${activeTab ? "active" : ""}`}
             key={activeTab}
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ duration: 0.5 }}
-            style={{ backgroundColor: tabs.find((t) => t.id === activeTab).color }}
+            transition={{ duration: 0.4 }}
           >
             <div className="content-wrapper">
-              {/* Check if content is a component or static */}
               {typeof tabs.find((t) => t.id === activeTab).content === "object" ? (
                 <>
-                  <motion.h1
-                    className="content-title"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
+                  <h1 className="content-title">
                     {tabs.find((t) => t.id === activeTab).content.title}
-                  </motion.h1>
-
-                  <motion.p
-                    className="content-description"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                  >
+                  </h1>
+                  <p className="content-description">
                     {tabs.find((t) => t.id === activeTab).content.description}
-                  </motion.p>
-
-                  <motion.img
-                    className="content-image"
-                    src={tabs.find((t) => t.id === activeTab).content.image}
-                    alt={tabs.find((t) => t.id === activeTab).label}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 0.2, scale: 1 }}
-                    transition={{ duration: 1, delay: 0.6 }}
-                  />
+                  </p>
                 </>
               ) : (
                 tabs.find((t) => t.id === activeTab).content

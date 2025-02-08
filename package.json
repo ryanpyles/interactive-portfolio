@@ -7,17 +7,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mui/material": "^5.16.14",
-    "@react-three/drei": "^9.120.8",
-    "@react-three/fiber": "^8.17.12",
-    "framer-motion": "^11.18.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0",
+    "@mui/material": "^5.17.0",
+    "@react-three/drei": "^9.123.0",
+    "@react-three/fiber": "^8.20.0",
+    "framer-motion": "^11.20.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.29.0",
     "three": "^0.172.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^4.0.0"
+    "@vitejs/plugin-react": "^4.5.0",
+    "vite": "^4.5.9"
   }
 }
