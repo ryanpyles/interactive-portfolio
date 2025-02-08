@@ -1,92 +1,64 @@
 .projects-container {
-    padding: 50px;
+    padding: 60px;
     text-align: center;
+    color: white;
   }
   
+  /* Section Title */
   .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
   }
   
-  .vercel-projects,
-  .github-projects {
-    margin-bottom: 50px;
-  }
-  
-  h3 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Grid Layout for Vercel Projects */
+  /* Grid Layout */
   .project-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .project-card {
-    background: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    justify-content: center;
   }
   
+  /* Individual Project Cards */
+  .project-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Project Title */
   .project-card h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
     margin-bottom: 10px;
   }
   
-  .project-card iframe {
-    border-radius: 8px;
-  }
-  
+  /* Project Buttons */
   .project-card .buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 15px;
   }
   
   .project-card .buttons a {
     text-decoration: none;
     background: #FF5722;
     color: white;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     transition: 0.3s;
   }
   
   .project-card .buttons a:hover {
     background: black;
-  }
-  
-  /* GitHub Projects */
-  .github-projects ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .github-projects li {
-    margin-bottom: 20px;
-    text-align: left;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-  }
-  
-  .github-projects li h4 {
-    margin-bottom: 5px;
-  }
-  
-  .github-projects li a {
-    text-decoration: none;
-    color: #FF5722;
-    font-weight: bold;
-  }
-  
-  .github-projects li a:hover {
-    color: black;
   }
   
