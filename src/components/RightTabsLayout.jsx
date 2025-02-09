@@ -63,7 +63,7 @@ const RightTabsLayout = () => {
       <AnimatePresence>
         {activeTab && (
           <motion.div
-            className={`expanded-content ${activeTab ? "active" : ""}`}
+            className="expanded-content active"
             key={activeTab}
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
@@ -83,7 +83,6 @@ const RightTabsLayout = () => {
               ) : (
                 tabs.find((t) => t.id === activeTab).content
               )}
-
               <button onClick={() => setActiveTab(null)} className="close-btn">
                 Close
               </button>

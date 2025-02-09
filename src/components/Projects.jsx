@@ -1,98 +1,53 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import "./RightTabsLayout.css";
-import Projects from "./Projects";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import "./Projects.css";
 
-const tabs = [
-  {
-    id: "home",
-    label: "Home/About Me",
-    color: "#FFD700",
-    content: {
-      title: "Welcome to My Portfolio",
-      description: "I'm a full-stack developer specializing in modern web experiences.",
-    },
-  },
-  {
-    id: "services",
-    label: "Services",
-    color: "#FF6347",
-    content: {
-      title: "What I Offer",
-      description: "Web development, branding, UX/UI design, and digital strategy.",
-    },
-  },
-  {
-    id: "portfolio",
-    label: "Portfolio",
-    color: "#87CEFA",
-    content: <Projects />,
-  },
-  {
-    id: "contact",
-    label: "Contact",
-    color: "#32CD32",
-    content: {
-      title: "Let's Connect",
-      description: "Reach out for collaborations or freelance opportunities.",
-    },
-  },
-];
+const Projects = () => {
+  const [githubProjects, setGithubProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const RightTabsLayout = () => {
-  const [activeTab, setActiveTab] = useState(null);
-
-  const toggleTab = (id) => {
-    setActiveTab(activeTab === id ? null : id);
-  };
+  useEffect(() => {
+    fetch("https://api.github.com/users/ryanpyles/repos")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch GitHub projects");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setGithubProjects(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
+  }, []);
 
   return (
-    <div className="right-tabs-container">
-      <div className="tabs">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            className={`tab ${activeTab === tab.id ? "active" : ""}`}
-            onClick={() => toggleTab(tab.id)}
-          >
-            {tab.label}
-          </button>
-        ))}
+    <div className="projects-container">
+      <h2 className="section-title">My Projects</h2>
+
+      {loading && <p className="loading-text">Loading projects...</p>}
+      {error && <p className="error-text">{error}</p>}
+
+      <div className="github-projects">
+        <h3>GitHub Repositories</h3>
+        <ul>
+          {githubProjects.map((project) => (
+            <motion.li key={project.id} whileHover={{ scale: 1.05 }}>
+              <h4>{project.name}</h4>
+              <p>{project.description || "No description available"}</p>
+              <a href={project.html_url} target="_blank" rel="noopener noreferrer">
+                View on GitHub
+              </a>
+            </motion.li>
+          ))}
+        </ul>
       </div>
-
-      <AnimatePresence>
-        {activeTab && (
-          <motion.div
-            className={`expanded-content ${activeTab ? "active" : ""}`}
-            key={activeTab}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.4 }}
-          >
-            <div className="content-wrapper">
-              {typeof tabs.find((t) => t.id === activeTab).content === "object" ? (
-                <>
-                  <h1 className="content-title">
-                    {tabs.find((t) => t.id === activeTab).content.title}
-                  </h1>
-                  <p className="content-description">
-                    {tabs.find((t) => t.id === activeTab).content.description}
-                  </p>
-                </>
-              ) : (
-                tabs.find((t) => t.id === activeTab).content
-              )}
-
-              <button onClick={() => setActiveTab(null)} className="close-btn">
-                Close
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
 
-export default RightTabsLayout;
+export default Projects;
