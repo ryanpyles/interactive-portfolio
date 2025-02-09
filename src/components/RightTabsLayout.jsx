@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./RightTabsLayout.css";
-import Projects from "./Projects"; // Import the Projects section
+import Projects from "./Projects";
 
 const tabs = [
   {
@@ -48,20 +48,18 @@ const RightTabsLayout = () => {
 
   return (
     <div className="right-tabs-container">
-      {/* Vertical Tabs */}
       <div className="tabs">
         {tabs.map((tab) => (
-          <div
+          <button
             key={tab.id}
             className={`tab ${activeTab === tab.id ? "active" : ""}`}
             onClick={() => toggleTab(tab.id)}
           >
             {tab.label}
-          </div>
+          </button>
         ))}
       </div>
 
-      {/* Expanding Content */}
       <AnimatePresence>
         {activeTab && (
           <motion.div
@@ -86,7 +84,6 @@ const RightTabsLayout = () => {
                 tabs.find((t) => t.id === activeTab).content
               )}
 
-              {/* Close Button */}
               <button onClick={() => setActiveTab(null)} className="close-btn">
                 Close
               </button>
